@@ -1,0 +1,43 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  email: String!
+  name: String
+  posts: [Post!]
+}
+
+type Post {
+  id: Int!
+  published: Boolean
+  title: String!
+  content: String
+  author: User
+  authorId: Int!
+}
+
+type Query {
+  getPostById(id: Float!): Post
+  getAllPosts: [Post!]!
+  getPublishedPosts: [Post!]!
+  getFilteredPosts(searchString: String!): [Post!]!
+}
+
+type Mutation {
+  createDraft(data: PostCreateInput!, authorEmail: String!): Post!
+  publishPost(id: String!): Post
+  deletePost(id: String!): Post
+  signupUser(data: UserCreateInput!): User!
+}
+
+input PostCreateInput {
+  title: String!
+  content: String
+}
+
+input UserCreateInput {
+  name: String
+  email: String!
+}
